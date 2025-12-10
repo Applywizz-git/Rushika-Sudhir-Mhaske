@@ -1,0 +1,212 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    /* Rich Dark Mode - Deep Navy & Vibrant Violet/Cyan */
+    --background: 230 35% 7%;
+    --foreground: 210 20% 98%;
+
+    --card: 230 25% 12%;
+    --card-foreground: 210 20% 98%;
+
+    --popover: 230 25% 12%;
+    --popover-foreground: 210 20% 98%;
+
+    /* Rich Violet Primary */
+    --primary: 265 83% 65%;
+    --primary-foreground: 210 20% 98%;
+
+    /* Deep Navy Secondary */
+    --secondary: 230 25% 18%;
+    --secondary-foreground: 210 20% 98%;
+
+    /* Vibrant Cyan Accent */
+    --accent: 190 90% 50%;
+    --accent-foreground: 230 35% 7%;
+
+    --muted: 230 20% 20%;
+    --muted-foreground: 230 20% 70%;
+
+    --destructive: 0 84.2% 60.2%;
+    --destructive-foreground: 210 40% 98%;
+
+    --border: 230 25% 20%;
+    --input: 230 25% 20%;
+    --ring: 265 83% 65%;
+
+    --radius: 0.75rem;
+
+    /* Glass effect */
+    --glass-bg: 230 30% 12% / 0.7;
+    --glass-border: 265 83% 65% / 0.2;
+
+    /* Brand specific - Gradient flows from Violet to Cyan */
+    --brand-gradient-start: 265 83% 65%;
+    --brand-gradient-end: 190 90% 50%;
+    --brand-glow: 265 83% 65% / 0.4;
+
+    /* Sidebar */
+    --sidebar-background: 230 35% 7%;
+    --sidebar-foreground: 210 20% 98%;
+    --sidebar-primary: 265 83% 65%;
+    --sidebar-primary-foreground: 210 20% 98%;
+    --sidebar-accent: 230 25% 18%;
+    --sidebar-accent-foreground: 210 20% 98%;
+    --sidebar-border: 230 25% 20%;
+    --sidebar-ring: 265 83% 65%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground font-body antialiased;
+  }
+
+  html {
+    scroll-behavior: smooth;
+  }
+
+  ::selection {
+    @apply bg-primary/30 text-foreground;
+  }
+}
+
+@layer components {
+  .glass {
+    @apply bg-card/70 backdrop-blur-xl border border-border/30;
+  }
+
+  .glass-strong {
+    @apply bg-card/90 backdrop-blur-2xl border border-border/50;
+  }
+
+  .gradient-text {
+    @apply bg-gradient-to-r from-primary to-accent bg-clip-text text-transparent;
+  }
+
+  .gradient-bg {
+    @apply bg-gradient-to-br from-primary via-primary/80 to-accent;
+  }
+
+  .glow {
+    box-shadow: 0 0 40px hsl(var(--brand-glow));
+  }
+
+  .glow-sm {
+    box-shadow: 0 0 20px hsl(var(--brand-glow));
+  }
+
+  .text-balance {
+    text-wrap: balance;
+  }
+}
+
+@layer utilities {
+  .animate-float {
+    animation: float 6s ease-in-out infinite;
+  }
+
+  .animate-pulse-glow {
+    animation: pulse-glow 2s ease-in-out infinite;
+  }
+
+  .animate-shimmer {
+    animation: shimmer 2s linear infinite;
+    background-size: 200% 100%;
+  }
+
+  .animate-typewriter {
+    overflow: hidden;
+    border-right: 2px solid hsl(var(--primary));
+    white-space: nowrap;
+    animation: typewriter 3s steps(40) 1s forwards, blink 0.75s step-end infinite;
+  }
+}
+
+@keyframes float {
+
+  0%,
+  100% {
+    transform: translateY(0px);
+  }
+
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+@keyframes pulse-glow {
+
+  0%,
+  100% {
+    box-shadow: 0 0 20px hsl(var(--brand-glow));
+  }
+
+  50% {
+    box-shadow: 0 0 40px hsl(var(--brand-glow)), 0 0 60px hsl(var(--brand-glow));
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% 0;
+  }
+
+  100% {
+    background-position: 200% 0;
+  }
+}
+
+@keyframes typewriter {
+  from {
+    width: 0;
+  }
+
+  to {
+    width: 100%;
+  }
+}
+
+@keyframes blink {
+  50% {
+    border-color: transparent;
+  }
+}
+
+/* Scrollbar styling */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  @apply bg-muted/50;
+}
+
+::-webkit-scrollbar-thumb {
+  @apply bg-primary/40 rounded-full;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  @apply bg-primary/60;
+}
+
+/* AOS custom animations */
+[data-aos="fade-up-scale"] {
+  opacity: 0;
+  transform: translateY(30px) scale(0.95);
+  transition-property: opacity, transform;
+}
+
+[data-aos="fade-up-scale"].aos-animate {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
