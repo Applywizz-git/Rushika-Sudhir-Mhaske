@@ -179,18 +179,32 @@ const Hero = () => {
               <div className="absolute inset-0 bg-primary/20 rounded-full blur-3xl scale-110" />
               
               {/* Image container */}
-              <motion.div
+              {/* <motion.div
                 className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden glass border-4 border-primary/30"
                 animate={{ y: [0, -10, 0] }}
                 transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              >
+              > */}
                 {/* Placeholder - replace with actual image */}
-                <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
+                {/* <div className="w-full h-full bg-gradient-to-br from-primary/20 to-accent/20 flex items-center justify-center">
                   <span className="text-6xl md:text-7xl lg:text-8xl font-display font-bold text-primary/50">
                     {profile.personal.initials}
                   </span>
                 </div>
-              </motion.div>
+              </motion.div> */}
+
+              <motion.div
+  className="relative w-64 h-64 md:w-80 md:h-80 lg:w-96 lg:h-96 rounded-full overflow-hidden glass border-4 border-primary/30"
+  animate={{ y: [0, -10, 0] }}
+  transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
+>
+  {/* Actual image from public/assets/image.png */}
+  <img
+    src="/assets/image.jpeg"
+    alt="Profile"
+    className="w-full h-full object-cover"
+  />
+</motion.div>
+
 
               {/* Decorative rings */}
               <motion.div
